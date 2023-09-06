@@ -12,12 +12,12 @@ then
 fi
 
 validate(){
-    if [ $? -ne 0 ]
+    if [ $1 -ne 0 ]
     then
-        echo -e "$R  $1  is FAiled $N"
+        echo -e "$R  $2  is FAiled $N"
         exit 1
     else 
-        echo -e "$Y $1 is success"
+        echo -e "$Y $2 is success"
     fi
 }
 
@@ -25,15 +25,15 @@ cp  mongo.repo /etc/yum.repos.d/mongo.repo
 
 validate $? "configuring the mongo"
 
-yum install mongodb-org -y >logfiles
+yum install mongodb-org -y >>$logfiles
 
 validate $?  "Installing MongoDb"
 
-systemctl enable mongod >logfiles
+systemctl enable mongod >>$logfiles
 
 validate $? "Enabling MongoDb"
 
-systemctl start mongod >logfiles
+systemctl start mongod >>$logfiles
 
 validate $? "Starting Mongodb"
 
@@ -41,6 +41,6 @@ sed -i "s/127.0.0.1/0.0.0.0/" <<<vim /etc/mongod.conf
 
 validate $? "Changing the DNS"
 
-systemctl restart mongod >logfiles
+systemctl restart mongod >>logfiles
 
 validate $? "Restarting MongoDB"
