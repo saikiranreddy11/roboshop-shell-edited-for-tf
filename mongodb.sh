@@ -21,7 +21,7 @@ validate(){
     fi
 }
 
-vim /etc/yum.repos.d/mongo.repo <<<mongo.repo
+cp  mongo.repo /etc/yum.repos.d/mongo.repo 
 
 validate $? "configuring the mongo"
 
