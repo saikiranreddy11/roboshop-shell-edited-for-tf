@@ -1,3 +1,4 @@
+#!/bin/bash
 id=$(id -u)
 R="\e[31m"
 N="\e[0m"
