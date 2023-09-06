@@ -66,7 +66,7 @@ npm install >>$logfiles
 validate $? "Download the dependencies."
 
 
-cp catalogue.ser /etc/systemd/system/catalogue.service >>$logfiles
+cp catalogue.service /etc/systemd/system/catalogue.service >>$logfiles
 
 validate $? "Setup SystemD Catalogue Service"
 
