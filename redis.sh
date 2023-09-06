@@ -23,15 +23,15 @@ validate(){
 }
 
 
-yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y >>$logfiles
+yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$logfiles
 
 validate $? "configuring redis"
 
-yum module enable redis:remi-6.2 -y >>$logfiles
+yum module enable redis:remi-6.2 -y &>>$logfiles
 
 validate $? "enabling redis"
 
-yum install redis -y >>$logfiles
+yum install redis -y &>>$logfiles
 
 validate $? "Installing redis"
 
@@ -39,10 +39,10 @@ sed -i "s/127.0.0.1/0.0.0.0/" <<<vim /etc/redis.conf
 
 validate $? "Changing the DNS" 
 
-systemctl enable redis >>$logfiles
+systemctl enable redis &>>$logfiles
 
 validate $? "Enabling Redis"
 
-systemctl start redis >>$logfiles
+systemctl start redis &>>$logfiles
 
 validate $? "Starting Redis"
