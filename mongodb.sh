@@ -38,7 +38,7 @@ systemctl start mongod >>$logfiles
 
 validate $? "Starting Mongodb"
 
-sed -i "s/127.0.0.1/0.0.0.0/" <<<vim /etc/mongod.conf
+sed -i "s/127.0.0.1/0.0.0.0/"  /etc/mongod.conf
 
 validate $? "Changing the DNS"
 
