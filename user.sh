@@ -5,7 +5,7 @@ N="\e[0m"
 Y="\e[33m"
 date=$(date +%F-%H-%M-%S)
 script_name=$0
-logfiles=/tmp/shell-script-logs/$script_name-$date.log 
+#logfiles=/tmp/shell-script-logs/$script_name-$date.log 
 
 if [ $id -ne 0 ]
 then
@@ -26,10 +26,10 @@ validate(){
 test -d /tmp/shell-script-logs
 if [ $? -ne 0 ]
 then
-    mkdir /shell-script-logs >>$logfiles
+    mkdir /tmp/shell-script-logs 
     validate $? "setup an shell-script-log directory"
 fi
-
+logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
 
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash >>$logfiles
