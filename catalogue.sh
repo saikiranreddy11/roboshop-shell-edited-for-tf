@@ -48,7 +48,7 @@ then
 fi
 
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip >>$logfiles
+curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip  &>>$logfiles
 
 validate $? "Download the application code to created app directory"
 
@@ -58,51 +58,51 @@ cd /app  >>$logfiles
 
 
 
-unzip /tmp/catalogue.zip >>$logfiles
+unzip /tmp/catalogue.zip -y &>>$logfiles
 
 
 
-cd /app >>$logfiles
+cd /app &>>$logfiles
 
 
 
 
-npm install >>$logfiles
+npm install &>>$logfiles
 
 validate $? "Download the dependencies."
 
 
-cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service >>$logfiles
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service &>>$logfiles
 
 validate $? "Setup SystemD Catalogue Service"
 
 
-systemctl daemon-reload >>$logfiles
+systemctl daemon-reload &>>$logfiles
 
 validate $? "Load the service"
 
 
-systemctl enable catalogue >>$logfiles
+systemctl enable catalogue &>>$logfiles
 
 validate $? "enable the service.L"
 
 
-systemctl start catalogue >>$logfiles
+systemctl start catalogue &>>$logfiles
 
 validate $? "Start the service."
 
 
-cp /home/centos/roboshop-shell/mongoshell.repo /etc/yum.repos.d/mongo.repo >>$logfiles
+cp /home/centos/roboshop-shell/mongoshell.repo /etc/yum.repos.d/mongo.repo &>>$logfiles
 
 validate $? "setup MongoDB repo client "
 
 
-yum install mongodb-org-shell -y >>$logfiles
+yum install mongodb-org-shell -y &>>$logfiles
 
 validate $? "install mongodb-client"
 
 
-mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js >>$logfiles
+mongo --host MONGODB-SERVER-IPADDRESS </app/schema/catalogue.js &>>$logfiles
 
 validate $? "Load Schema"
 
