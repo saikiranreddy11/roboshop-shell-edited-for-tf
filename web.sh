@@ -30,6 +30,8 @@ then
     validate $? "setup an shell-script-log directory"
 fi
 
+logfiles=/tmp/shell-script-logs/$script_name-$date.log 
+
 yum install nginx -y &>>$logfiles
 
 validate $? "installing nginx "
