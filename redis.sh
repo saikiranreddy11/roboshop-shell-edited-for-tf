@@ -35,7 +35,7 @@ yum install redis -y &>>$logfiles
 
 validate $? "Installing redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/redis.conf /etc/redis/redis.conf
+sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis/redis.conf
 
 validate $? "Changing the DNS" 
 
