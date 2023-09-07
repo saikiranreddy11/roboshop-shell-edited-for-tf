@@ -26,7 +26,7 @@ validate(){
 test -d /tmp/shell-script-logs
 if [ $? -ne 0 ]
 then
-    mkdir /shell-script-logs >>$logfiles
+    mkdir /tmp/shell-script-logs >>$logfiles
     validate $? "setup an shell-script-log directory"
 fi
 
