@@ -67,7 +67,7 @@ cd /app  &>>$logfiles
 
 
 
-unzip /tmp/user.zip -y &>>$logfiles
+unzip -o /tmp/user.zip  &>>$logfiles
 validate $? "unzipping is "
 
 
