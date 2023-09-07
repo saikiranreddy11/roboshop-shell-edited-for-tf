@@ -62,12 +62,12 @@ curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip  &>>$log
 validate $? "Download the application code to created app directory"
 
 
-cd /app  >>$logfiles
+cd /app  &>>$logfiles
 
 
 
 
-unzip /tmp/user.zip -y &>>$logfiles
+unzip /tmp/user.zip  &>>$logfiles
 validate $? "unzipping is "
 
 
