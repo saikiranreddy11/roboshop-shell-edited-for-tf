@@ -67,7 +67,7 @@ cd /app  >>$logfiles
 
 
 
-unzip /tmp/cart.zip -y &>>$logfiles
+unzip -o /tmp/cart.zip  &>>$logfiles
 
 
 
