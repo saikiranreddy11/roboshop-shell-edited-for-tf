@@ -43,11 +43,13 @@ systemctl start rabbitmq-server >>$logfiles
 validate $? "Start RabbitMQ Service"
 
 
+sudo rabbitmqctl list_users | awk '{print $1}' | grep  "roboshop" >>$logfiles
 
-rabbitmqctl add_user roboshop roboshop123 >>$logfiles
-
-validate $? "Adding a user roboshop"
-
+if [ $? -ne 0 ]
+then
+    rabbitmqctl add_user roboshop roboshop123 >>$logfiles
+    validate $? "Adding a user roboshop"
+fi
 
 rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >>$logfiles
 
