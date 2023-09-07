@@ -92,7 +92,7 @@ systemctl start catalogue >>$logfiles
 validate $? "Start the service."
 
 
-cp mongoshell.repo /etc/yum.repos.d/mongo.repo >>$logfiles
+cp /home/centos/roboshop-shell/mongoshell.repo /etc/yum.repos.d/mongo.repo >>$logfiles
 
 validate $? "setup MongoDB repo client "
 
