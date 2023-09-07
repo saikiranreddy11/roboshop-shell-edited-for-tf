@@ -32,7 +32,7 @@ yum install nodejs -y >>$logfiles
 
 validate $? "Install NodeJS"
 
-id roboshop
+id roboshop >>$logfiles
 
 if [ $? -ne 0 ]
 then
@@ -40,10 +40,12 @@ then
     validate $? "Adding application User"
 fi
 
-
-mkdir /app >>$logfiles
-
-validate $? "setup an app directory"
+test -d /app
+if [ $? -ne 0 ]
+then
+    mkdir /app >>$logfiles
+    validate $? "setup an app directory"
+fi
 
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip >>$logfiles
