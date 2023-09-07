@@ -23,35 +23,35 @@ validate(){
 }
 
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash >>$logfiles
+curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>$logfiles
 
 validate $? "Configure YUM Repos from the script provided by vendor"
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash >>$logfiles
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>$logfiles
 
 validate $? "Configure YUM Repos for RabbitMQ."
 
-yum install rabbitmq-server -y >>$logfiles
+yum install rabbitmq-server -y &>>$logfiles
 
 validate $? "Install RabbitMQ"
 
-systemctl enable rabbitmq-server >>$logfiles
+systemctl enable rabbitmq-server &>>$logfiles
 
 
 
-systemctl start rabbitmq-server >>$logfiles
+systemctl start rabbitmq-server &>>$logfiles
 validate $? "Start RabbitMQ Service"
 
 
-sudo rabbitmqctl list_users | awk '{print $1}' | grep  "roboshop" >>$logfiles
+sudo rabbitmqctl list_users | awk '{print $1}' | grep  "roboshop" &>>$logfiles
 
 if [ $? -ne 0 ]
 then
-    rabbitmqctl add_user roboshop roboshop123 >>$logfiles
+    rabbitmqctl add_user roboshop roboshop123 &>>$logfiles
     validate $? "Adding a user roboshop"
 fi
 
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" >>$logfiles
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>$logfiles
 
 validate $? "Setting the permissions for the user"
 
