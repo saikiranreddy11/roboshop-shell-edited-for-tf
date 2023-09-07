@@ -23,46 +23,21 @@ validate(){
 }
 
 
-# yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$logfiles
-
-# validate $? "configuring redis"
-
-# yum module enable redis:remi-6.2 -y &>>$logfiles
-
-# validate $? "enabling redis"
-
-# yum install redis -y &>>$logfiles
-
-# validate $? "Installing redis"
-
-# sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis/redis.conf
-
-# validate $? "Changing the DNS" 
-
-# systemctl enable redis &>>$logfiles
-
-# validate $? "Enabling Redis"
-
-# systemctl start redis &>>$logfiles
-
-# validate $? "Starting Redis"
-
-
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$logfiles
 
-validate $? "Installing Redis repo"
+validate $? "configuring redis"
 
 yum module enable redis:remi-6.2 -y &>>$logfiles
 
-validate $? "Enabling Redis 6.2"
+validate $? "enabling redis"
 
 yum install redis -y &>>$logfiles
 
-validate $? "Installing Redis 6.2"
+validate $? "Installing redis"
 
-sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis/redis.conf &>>$logfiles
+sudo sed -i 's/127.0.0.1/0.0.0.0/g' /etc/redis.conf /etc/redis/redis.conf
 
-validate $? "Allowing Remote connections to redis"
+validate $? "Changing the DNS" 
 
 systemctl enable redis &>>$logfiles
 
@@ -71,3 +46,5 @@ validate $? "Enabling Redis"
 systemctl restart redis &>>$logfiles
 
 validate $? "Starting Redis"
+
+
