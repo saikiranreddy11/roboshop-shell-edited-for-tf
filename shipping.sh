@@ -31,7 +31,7 @@ then
 fi
 logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
-yum install maven -y
+yum install maven -y  &>>$logfiles
 
 validate $? "installing maven"
 
