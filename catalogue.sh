@@ -6,6 +6,7 @@ Y="\e[33m"
 date=$(date +%F-%H-%M-%S)
 script_name=$0
 logfiles=/tmp/shell-script-logs/$script_name-$date.log 
+
 if [ $id -ne 0 ]
 then
     echo -e "$R ERROR: $N you do not have the sudo access, please install with root access"
@@ -31,10 +32,13 @@ yum install nodejs -y >>$logfiles
 
 validate $? "Install NodeJS"
 
+id roboshop
 
-useradd roboshop >>$logfiles
-
-validate $? "Add application User"
+if [ $? -ne 0 ]
+then
+    useradd roboshop >>$logfiles
+    validate $? "Adding application User"
+fi
 
 
 mkdir /app >>$logfiles
@@ -66,7 +70,7 @@ npm install >>$logfiles
 validate $? "Download the dependencies."
 
 
-cp catalogue.service /etc/systemd/system/catalogue.service >>$logfiles
+cp /home/centos/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service >>$logfiles
 
 validate $? "Setup SystemD Catalogue Service"
 
