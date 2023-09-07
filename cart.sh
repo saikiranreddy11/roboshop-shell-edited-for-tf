@@ -101,23 +101,5 @@ systemctl start cart &>>$logfiles
 validate $? "Start the service."
 
 
-cp /home/centos/roboshop-shell/mongoshell.repo /etc/yum.repos.d/mongo.repo &>>$logfiles
-
-validate $? "setup MongoDB repo client "
-
-
-yum install mongodb-org-shell -y &>>$logfiles
-
-validate $? "install mongodb-client"
-
-
-mongo --host mongodb.saikiransudhireddy.com  </app/schema/catalogue.js &>>$logfiles
-
-validate $? "Load Schema"
-
-echo "done"
-
-validate $? "Setup is Successfull"
-
 
 
