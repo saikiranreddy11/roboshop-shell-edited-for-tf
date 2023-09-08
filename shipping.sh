@@ -96,7 +96,7 @@ validate $? "installing mysql"
 
 mysql -h mysql.saikiransudhireddy.com -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>$logfiles
 
-mysql -h mysql.saikiransudhireddy.com -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>$LOGFILE
+#mysql -h mysql.saikiransudhireddy.com -uroot -pRoboShop@1 < /app/schema/shipping.sql  &>>$LOGFILE
 
 validate $? "loading the schema"
 
