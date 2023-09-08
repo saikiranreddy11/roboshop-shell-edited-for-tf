@@ -32,7 +32,7 @@ fi
 
 logfiles=/tmp/shell-script-logs/$script_name-$date.log 
 
-yum install golang -y
+yum install golang -y &>>$logfiles
 
 id roboshop &>>$logfiles
 
@@ -78,5 +78,5 @@ validate $? "building"
 
 cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/dispatch.service &>>$logfiles
 
-validate $? "setup an app directory"
+validate $? "copying the configuration file"
 
