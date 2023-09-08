@@ -14,6 +14,6 @@ do
     else
         Instancetype="t2.micro"
     fi
-    aws ec2 run-instances --image-id $image  --instance-type $Instancetype --security-group-ids $security_grp --subnet-id $subnet --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r ".Instance[$i].PrivateIPaddress"
+    aws ec2 run-instances --image-id $image  --instance-type $Instancetype --security-group-ids $security_grp --subnet-id $subnet --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]"
 
 done
