@@ -94,7 +94,7 @@ yum install mysql -y &>>$logfiles
 
 validate $? "installing mysql"
 
-mysql -h mysql.saikiransudhireddy.com -uroot -pRoboShop@1 <<< /app/schema/shipping.sql &>>$logfiles
+mysql -h mysql.saikiransudhireddy.com -uroot -pRoboShop@1 <<<vim /app/schema/shipping.sql &>>$logfiles
 
 validate $? "loading the schema"
 
