@@ -113,7 +113,9 @@ yum install mongodb-org-shell -y &>>$logfiles
 validate $? "install mongodb-client"
 
 
-mongo --host mongodb.saikiransudhireddy.com  <<</app/schema/catalogue.js &>>$logfiles
+mongo --host mongodb.saikiransudhireddy.com </app/schema/catalogue.js &>>$logfiles
+
+#mongo --host mongodb.saikiransudhireddy.com </app/schema/catalogue.js &>>$LOGFILE
 
 validate $? "Load Schema"
 
