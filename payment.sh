@@ -33,6 +33,8 @@ logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
 yum install python36 gcc python3-devel -y >>$logfiles
 
+id roboshop >>$logfiles
+
 if [ $? -ne 0 ]
 then
     useradd roboshop >>$logfiles
