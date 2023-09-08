@@ -65,7 +65,7 @@ pip3.6 install -r requirements.txt >>$logfiles
 
 validate $? "installing the requirements"
 
-cat /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service >>$logfiles
+cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service >>$logfiles
 
 validate $? "copying the configuration"
 
