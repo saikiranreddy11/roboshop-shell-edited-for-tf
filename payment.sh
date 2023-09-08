@@ -31,13 +31,13 @@ then
 fi
 logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
-yum install python36 gcc python3-devel -y >>$logfiles
+yum install python36 gcc python3-devel -y &>>$logfiles
 
-id roboshop >>$logfiles
+id roboshop &>>$logfiles
 
 if [ $? -ne 0 ]
 then
-    useradd roboshop >>$logfiles
+    useradd roboshop &>>$logfiles
     validate $? "Adding application User"
 fi 
 
@@ -45,30 +45,42 @@ fi
 test -d /app
 if [ $? -ne 0 ]
 then
-    mkdir /app >>$logfiles
+    mkdir /app &>>$logfiles
     validate $? "setup an app directory"
 fi
 
-curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip >>$logfiles
+curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip &>>$logfiles
 
 validate $? "downloading the payment files"
 
-cd /app >>$logfiles
+cd /app &>>$logfiles
 
 
-unzip -o /tmp/payment.zip >>$logfiles
+unzip -o /tmp/payment.zip &>>$logfiles
 
 validate $? "unzipping the files"
 
-cd /app >>$logfiles
+cd /app &>>$logfiles
 
 
-pip3.6 install -r requirements.txt >>$logfiles
+pip3.6 install -r requirements.txt &>>$logfiles
 
 validate $? "installing the requirements"
 
 cp /home/centos/roboshop-shell/payment.service /etc/systemd/system/payment.service >>$logfiles
 
 validate $? "copying the configuration"
+
+systemctl daemon-reload &>>$logfiles
+
+validate $? "daemon reload"
+
+systemctl enable payment &>>$logfiles
+
+validate $? "enable payment"
+
+systemctl start payment &>>$logfiles
+
+validate $? "start payment"
 
 
