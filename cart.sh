@@ -96,7 +96,7 @@ systemctl enable cart &>>$logfiles
 validate $? "enable the service"
 
 
-systemctl start cart &>>$logfiles
+systemctl restart cart &>>$logfiles
 
 validate $? "Start the service."
 
