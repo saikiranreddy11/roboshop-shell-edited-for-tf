@@ -8,7 +8,7 @@ Instancetype=""
 
 for i in "${services[@]}"
 do
-    if [ [ $i=="mongodb" || $i=="mysql" ] ];
+    if [[ $i=="mongodb" || $i=="mysql" ]];
     then 
         Instancetype="t3.micro"
     else
