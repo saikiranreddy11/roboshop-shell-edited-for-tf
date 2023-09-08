@@ -5,7 +5,7 @@ N="\e[0m"
 Y="\e[33m"
 date=$(date +%F-%H-%M-%S)
 script_name=$0
-logfiles=/tmp/shell-script-logs/$script_name-$date.log 
+#logfiles=/tmp/shell-script-logs/$script_name-$date.log 
 if [ $id -ne 0 ]
 then
     echo -e "$R ERROR: $N you do not have the sudo access, please install with root access"
@@ -21,6 +21,15 @@ validate(){
         echo -e "$Y $2 is success"
     fi
 }
+
+
+test -d /tmp/shell-script-logs
+if [ $? -ne 0 ]
+then
+    mkdir /tmp/shell-script-logs 
+    validate $? "setup an shell-script-log directory"
+fi
+logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
 
 yum install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y &>>$logfiles

@@ -30,7 +30,6 @@ then
 fi
 logfiles=/tmp/shell-script-logs/$script_name-$date.log
 
-
 yum module disable mysql -y &>>$logfiles
 
 validate $? "Disabling SQL"
