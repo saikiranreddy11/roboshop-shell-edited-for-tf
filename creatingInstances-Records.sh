@@ -9,7 +9,7 @@ domainname=saikiransudhireddy.com
 hostedzone=Z05570443S15P72O43ST7
 for i in "${services[@]}"
 do
-    if [[ $i=="mongodb" || $i=="mysql" ]];
+    if [[ $i == "mongodb" || $i == "mysql" ]];
     then 
         Instancetype="t3.micro"
     else
