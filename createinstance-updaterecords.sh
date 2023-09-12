@@ -3,7 +3,8 @@
 image=ami-03265a0778a880afb
 security_grp=sg-07486e05b46c9943d
 subnet=subnet-0dd54bd754c61211a
-services=("mongodb" "mysql" "redis" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
+#services=("mongodb" "mysql" "redis" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
+services=$@
 Instancetype=""
 domainname=saikiransudhireddy.com
 hostedzone=Z05570443S15P72O43ST7
