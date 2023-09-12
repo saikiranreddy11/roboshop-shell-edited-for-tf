@@ -8,7 +8,8 @@ services=$@
 Instancetype=""
 domainname=saikiransudhireddy.com
 hostedzone=Z05570443S15P72O43ST7
-for i in "${services[@]}"
+#for i in "${services[@]}"
+for i in $@
 do
     if [[ $i == "mongodb" || $i == "mysql" ]];
     then 
