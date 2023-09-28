@@ -1,7 +1,7 @@
 #!/bin/bash
 
 image=ami-03265a0778a880afb
-security_grp=sg-07486e05b46c9943d
+security_grp=sg-05ee15da692a6148c
 subnet=subnet-0dd54bd754c61211a
 #services=("mongodb" "mysql" "redis" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 services=$@
@@ -10,7 +10,7 @@ domainname=saikiransudhireddy.com
 hostedzone=Z05570443S15P72O43ST7
 for i in "${services[@]}"
 do
-    if [[ $i == "mongodb" || $i == "mysql" ]];
+    if [[ $i == "mongodb" || $i == "mysql" ]];  
     then 
         Instancetype="t3.micro"
     else
@@ -76,7 +76,7 @@ else
     # The existing DNS record does not exist, create it
     echo "Creating a new DNS record..."
     aws route53 change-resource-record-sets \
-        --hosted-zone-id <YOUR_HOSTED_ZONE_ID> \
+        --hosted-zone-id $hostedzone \
         --change-batch '{
             "Changes": [
                 {
@@ -107,7 +107,7 @@ fi
 #     # Example: aws ec2 run-instances ...
 # else
 #     echo "EC2 instance already exists."
-# fi
+# fis
 
 
 done
