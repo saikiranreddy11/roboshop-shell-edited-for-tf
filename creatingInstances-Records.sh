@@ -1,7 +1,7 @@
 #!/bin/bash
 
 image=ami-03265a0778a880afb
-security_grp=sg-07486e05b46c9943d
+security_grp=sg-05ee15da692a6148c
 subnet=subnet-0dd54bd754c61211a
 #services=("mongodb" "mysql" "redis" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "web")
 services=$@
