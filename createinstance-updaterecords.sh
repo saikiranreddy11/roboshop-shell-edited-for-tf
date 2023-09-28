@@ -16,7 +16,7 @@ do
     else
         Instancetype="t2.micro"
     fi
-    IP_address=$(aws ec2 run-instances --image-id $image  --instance-type $Instancetype --security-group-ids $security_grp --subnet-id $subnet --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=$i}]" | jq -r ".Instances[0].PrivateIpAddress")
+    IP_address=$(aws ec2 run-instances --image-id $image  --instance-type $Instancetype --security-group-ids $security_grp --subnet-id $subnet --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=$i}]' | jq -r ".Instances[0].PrivateIpAddress")
     echo "created the instance with private IP : $IP_address"
 
     # aws route53 change-resource-record-sets --hosted-zone-id $hostedzone --change-batch '{
