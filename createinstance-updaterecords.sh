@@ -62,7 +62,7 @@ if [ $? -eq 0 ]; then
                     "ResourceRecordSet": {
                         "Name": "'$i.$domainname.'",
                         "Type": "A",
-                        "TTL": 300,
+                        "TTL": 1,
                         "ResourceRecords": [
                             {
                                 "Value": "'$IP_address'"
@@ -84,7 +84,7 @@ else
                     "ResourceRecordSet": {
                         "Name": "'$i.$domainname.'",
                         "Type": "A",
-                        "TTL": 300,
+                        "TTL": 1,
                         "ResourceRecords": [
                             {
                                 "Value": "'$IP_address'"
