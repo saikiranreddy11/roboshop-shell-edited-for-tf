@@ -81,7 +81,7 @@ npm install &>>$logfiles
 validate $? "Download the dependencies."
 
 
-cp /home/centos/roboshop-shell/cart.service /etc/systemd/system/cart.service &>>$logfiles
+cp /home/centos/roboshop-shell-edited-for-tf/cart.service /etc/systemd/system/cart.service &>>$logfiles
 
 validate $? "Setup SystemD Cart Service"
 

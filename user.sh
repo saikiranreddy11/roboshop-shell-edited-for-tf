@@ -81,7 +81,7 @@ npm install &>>$logfiles
 validate $? "Download the dependencies."
 
 
-cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>>$logfiles
+cp /home/centos/roboshop-shell-edited-for-tf/user.service /etc/systemd/system/user.service &>>$logfiles
 
 validate $? "Setup SystemD Cart Service"
 
@@ -101,7 +101,7 @@ systemctl start user &>>$logfiles
 validate $? "Start the service."
 
 
-cp /home/centos/roboshop-shell/mongoshell.repo /etc/yum.repos.d/mongo.repo &>>$logfiles
+cp /home/centos/roboshop-shell-edited-for-tf/mongoshell.repo /etc/yum.repos.d/mongo.repo &>>$logfiles
 
 validate $? "setup MongoDB repo client "
 
